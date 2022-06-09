@@ -3,6 +3,7 @@ import React from "react";
 import Navbar from "../Componentes/Navbar";
 import Slider from "../Componentes/Slider";
 import ItemListContainer from "../Componentes/ItemListContainer";
+import ItemCount from "../Componentes/ItemCount";
 // import { Slider } from "@material-ui/core";
 
 const Home = () => {
