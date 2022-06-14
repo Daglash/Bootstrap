@@ -75,9 +75,7 @@ return(
                 </SearchContainer>
             </Left>
             <Center>
-                <img src="../imagenes/picolo.png" alt="picolo" />
-                <Logo>Clothes Beam</Logo>
-                <img src="../imagenes/picolo.png" alt="picolo" />
+                <Logo>Tomoe Gozen 巴 御前</Logo>
             </Center>
             <Right>
                 <MenuItem>REGISTER</MenuItem>

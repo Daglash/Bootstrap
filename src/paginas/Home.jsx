@@ -2,8 +2,8 @@ import Anuncio from "../Componentes/Anuncio";
 import React from "react";
 import Navbar from "../Componentes/Navbar";
 import Slider from "../Componentes/Slider";
-import ItemListContainer from "../Componentes/ItemListContainer";
-import ItemCount from "../Componentes/ItemCount";
+import Categorias from "../Componentes/Categorias";
+import Productos from "../Componentes/Productos";
 // import { Slider } from "@material-ui/core";
 
 const Home = () => {
@@ -12,7 +12,8 @@ const Home = () => {
             <Anuncio/>
             <Navbar/>
             <Slider/>
-            <ItemListContainer/>
+            <Categorias/>
+            <Productos/>
         </div>
     )
 }
