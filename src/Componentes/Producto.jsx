@@ -1,6 +1,10 @@
 import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
 import styled from "styled-components";
 import ItemCount from './ItemCount';
+import { productosventa } from "../data"
+import Customfetch from "./Customfetch"
 
 const Container = styled.div`
     flex: 1;
@@ -38,7 +42,13 @@ const Texto = styled.h6`
 
 const Producto = ({item}) => {
 
-    
+    const [items, setItems] = useState([])
+    useEffect(()=>{
+        Customfetch(3000,productosventa)
+        .then(resultado =>setItems(resultado))
+    },[items])
+
+
     const onAdd = (quantity) => {
         console.log(`Compraste ${quantity} unidades`);
     }
