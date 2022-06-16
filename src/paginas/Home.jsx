@@ -4,6 +4,7 @@ import Navbar from "../Componentes/Navbar";
 import Slider from "../Componentes/Slider";
 import Categorias from "../Componentes/Categorias";
 import Productos from "../Componentes/Productos";
+import ItemDetailContainer from "../paginas/ItemDetailContainer";
 // import { Slider } from "@material-ui/core";
 
 const Home = () => {
@@ -14,6 +15,7 @@ const Home = () => {
             <Slider/>
             <Categorias/>
             <Productos/>
+            <ItemDetailContainer/>
         </div>
     )
 }

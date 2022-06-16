@@ -97,3 +97,24 @@ export const sliderItems = [
       stock:3,
     },
   ]
+
+
+  const producto ={
+    id:1,
+    name: 'Remera',
+    price: 200,
+    stock: 4,
+
+    img:'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAMAAAD04JH5AAAAY1BMVEX///8LCwsAAAAGBgb4+Pju7u77+/vn5+dKSkrz8/Orq6vY2NjR0dF+fn6+vr4uLi4bGxsVFRWysrLHx8dnZ2d2dnaioqLf399SUlInJydbW1uGhoZCQkK4uLg6Ojo1NTWUlJRtedhpAAADqUlEQVR4nO2b6ZKqMBCFpVlkEUGQXZT3f8oLjGN5x6DkeNQqi/NTUvRHlk6n065WixA5a8WP9tZ+G0CjNJWegrdY93Jjr36SyWn7cuttGYtk6oediOw3L7Wfur0NQyL101AMc0CwXmTd2e5764NEOQesw/C0R3DzFyA47V7O5nuAUNXEvzwWCckjETSViGlcJP5tm2InVw3ETWjd4G1rQ65ePr7/hmAT/21ybB2K+e7038f/yPwz3e3mD+KIUD4/EE4ut28+v74K/bSwvXWwzUsF49gmU/lMDaWR8sWXuTbAmTLFOLZpnkEo4sk3/w7FoLsNZNfhAPUj+3MkkqD2U4b9oRPST3ZALzlhLmFNst8T5BBAzgM4IvYtlwYwsXs9UHDHBWgDtABAx+uAie3zgYgjYMhB334R80agdwX6kyAhdkDfBfrR6p4L0Ojad4hrYAAodZ3hltoBPUGhCdCwAXS9MXMRjgClnn3vfpgBAMR6Y1CQO6An0AtLuF5gBNAbg4wOYIqnYd8+0QH0xoAUDf4PMJFVUIrrh38J5p8Qih15Ef4AdLMBmLHIFcBp7p7smS8BUB7qleI7gTPAXFfg3zltwurPsFU3E2BVKHMCz6j/pKOvE5ZZrcvrhuFNWaqdLgm66N7J/7F2clYctmC+aJ3vI0EpJGrd6lRm+XNJEnuTh1keIQjiWbZNSpVVEAAve25DhxQiwBraGxaAbwIoDAjgySzp8wC8KyQQAE0PKgCwOcC7wQInIZyivRHoCedGYI/lPcyavxgA3Iy+CQCLB4gABwiAtwqwsyITIPw0AHR1wARoIQAkRz+hzacBoMsL4ma0WiOO4KsAAiQiIQYk4CQkVlFgy1A3Q39HmCMiVlYhrhi5qJoUco0tkU5y+IGQ6wtxidVESDwgx08DVMQhgACYc+DjQwBNwsM3ARw/vQyh3ZgI4CAnIyYAdDpmAkAZEr2LwvvaQJcHxIgIKyYA66dUggIiY6r8GBB2i6V1VfoSgJoGgJW1yYG2DLCbVNOghcVgRQtvHYLlDLzjMVjbyctSoQAdCwCsZ9AvIJsSOgdorhBdBTRPBFZUIHWUaoEFvhKxQhIUIGadj9E5ELPuzVA/QOsBFOBI+ZPJChwCkYq2G1q1Zk3L8LePMmd9fy8nKYdKjlkQg3HDbQL2v602eX2pSpkakfGZWYVtQPz4a63T1u/C+hCLWlXdJZu3/O3RsoM08fMmzAaFXZ5s06AgZkQWLVq0aNH79A8phDbysw8CFQAAAABJRU5ErkJggg==',
+    category: 'remeras',
+    description:
+    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum'
+  };
+
+  export const TraerProducto = () => {
+    return new Promise ((resolve, reject) => {
+      setTimeout(()=>{
+          resolve(producto);
+      },1000);
+      });
+    };
