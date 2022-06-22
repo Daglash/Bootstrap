@@ -1,21 +1,31 @@
-import Anuncio from "../Componentes/Anuncio";
+
 import React from "react";
-import Navbar from "../Componentes/Navbar";
+import {Routes, Route} from "react-router-dom"
 import Slider from "../Componentes/Slider";
 import Categorias from "../Componentes/Categorias";
 import Productos from "../Componentes/Productos";
-import ItemDetailContainer from "../paginas/ItemDetailContainer";
+import ItemDetailContainer from "./ItemDetailContainer";
 // import { Slider } from "@material-ui/core";
 
 const Home = () => {
     return (
         <div>
-            <Anuncio/>
-            <Navbar/>
-            <Slider/>
-            <Categorias/>
-            <Productos/>
-            <ItemDetailContainer/>
+        <Routes>
+            <Route path="/" element={<Slider/>}/>
+        </Routes>  
+        <Routes>
+            <Route path="/" element={<Categorias/>}/>
+        </Routes>
+        <Routes>
+            <Route path="/" element={<Productos/>}/>
+        </Routes>
+        <Routes>
+            <Route path="/Categorias/:categorias" element={<Productos/>}/>
+        </Routes>
+        <Routes>
+            <Route path="/ItemDetail/:id" element={<ItemDetailContainer/>}/>
+        </Routes>
+        
         </div>
     )
 }

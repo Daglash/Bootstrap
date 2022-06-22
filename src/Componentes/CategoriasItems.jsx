@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 const Container=styled.div`
     flex:1;
@@ -45,11 +46,13 @@ const CategoriasItems = ({item}) => {
     return(
         <div>
             <Container>
+                <Link to={`/Categorias/${item.title}`}>
                 <Image src={item.img}/>
                 <Info>
                     <Title bg={item.bg}>{item.title}</Title>
                     <Button>SHOP NOW</Button>
                 </Info>
+                </Link>
             </Container>
 
 

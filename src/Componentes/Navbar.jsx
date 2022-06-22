@@ -3,6 +3,7 @@ import { Search} from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
 import CartWidget from "../Componentes/CartWidget";
+import { Link } from "react-router-dom";
 
 
 const Container = styled.div`
@@ -75,7 +76,9 @@ return(
                 </SearchContainer>
             </Left>
             <Center>
+                <Link to="/" style={{color:"black",textDecoration: 'none'}}>
                 <Logo>Tomoe Gozen 巴 御前</Logo>
+                </Link>
             </Center>
             <Right>
                 <MenuItem>REGISTER</MenuItem>

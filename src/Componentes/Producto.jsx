@@ -5,13 +5,14 @@ import styled from "styled-components";
 import ItemCount from './ItemCount';
 import { productosventa } from "../data"
 import Customfetch from "./Customfetch"
+import {Link} from 'react-router-dom'
 
 const Container = styled.div`
     flex: 1;
     margin: 20px;
     flex-wrap:wrap;
     min-width: 300px;
-    height: 700px;
+    height: 800px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -60,6 +61,7 @@ const Producto = ({item}) => {
             <Wrapper>
                 <Texto Nombre={item.Nombre}>{item.Nombre}</Texto>
                 <ItemCount initial={0} stock={item.stock} onAdd={onAdd}/>
+                <Link to={`../ItemDetail/${item.Nombre}`}>Ver Detalle</Link>
             </Wrapper>
         </Container>
     )

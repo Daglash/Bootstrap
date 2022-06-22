@@ -1,9 +1,18 @@
+
 import Home from "./paginas/Home";
+import Navbar from "./Componentes/Navbar";
+import {BrowserRouter} from "react-router-dom";
+import Anuncio from "./Componentes/Anuncio";
+
 
 const App = () => {
-    return <Home/>;
-            
-    
+    return (
+        <BrowserRouter>
+            <Anuncio/>
+            <Navbar/>
+            <Home/>
+        </BrowserRouter>
+);
     
 }
 
