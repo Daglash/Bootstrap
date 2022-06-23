@@ -1,7 +1,5 @@
-import Anuncio from "../Componentes/Anuncio";
 import React from "react";
-import Navbar from "../Componentes/Navbar";
-
+import styled from "styled-components";
 
 const Container = styled.div``;
 
@@ -31,7 +29,7 @@ const TopButton = styled.button`
   color: ${(props) => props.type === "filled" && "white"};
 `;
 
-const TopText = styled.span`
+const Text = styled.span`
   text-decoration: underline;
   cursor: pointer;
   margin: 0px 10px;
@@ -41,16 +39,12 @@ const TopText = styled.span`
 const Carrito = () => {
   return (
     <Container>
-      <Navbar />
-      <Anuncio />
       <Wrapper>
         <Title>Tu Carrito</Title>
         <Top>
           <TopButton>CONTINUAR COMPRANDO</TopButton>
-          <TopTexts>
-            <TopText>Shopping Bag(2)</TopText>
-            <TopText>Lista de Deseadod (0)</TopText>
-          </TopTexts>
+            <Text>Shopping Bag(2)</Text>
+            <Text>Lista de Deseadod (0)</Text>
           <TopButton type="filled">COMPRAR</TopButton>
         </Top>
       </Wrapper>

@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import ItemCount from "../Componentes/ItemCount";
+// import { useState } from "react"
 
 const Container = styled.div``;
 
@@ -98,18 +99,29 @@ const AmountContainer = styled.div`
 
 
 
-const Product = ({product}) => {
+const ItemDetail = ({img,Nombre,stock,precio,descripcion}) => {
+
+  
+  // const [cant, setCant] = useState(true)
+
+  const onAdd = (quantity) => {
+    console.log(`Adicionaste ${quantity} unidades de ${Nombre} tu carrito`);
+}
+
+  // const onAdd = (cantidadSeleccionada) => {
+  //   setCant(cantidadSeleccionada)
+  // }
   return (
     <Container>
       <Wrapper>
         <ImgContainer>
-          <Image src={product.img} />
+          <Image src={img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>{product.name}</Title>
-          <Desc>{product.description}</Desc>
-          <Price>Precio: ${product.price}</Price>
-          <Stock>Stock:  {product.stock}</Stock>
+          <Title>{Nombre}</Title>
+          <Desc>{descripcion}</Desc>
+          <Price>Precio: ${precio}</Price>
+          <Stock>Stock:  {stock}</Stock>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
@@ -130,7 +142,7 @@ const Product = ({product}) => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-                <ItemCount initial={0} stock={product.stock}/>  
+                <ItemCount initial={0} stock={stock} onAdd={onAdd}/>  
             </AmountContainer>
           </AddContainer>
         </InfoContainer>
@@ -139,4 +151,4 @@ const Product = ({product}) => {
   );
 };
 
-export default Product;
+export default ItemDetail;

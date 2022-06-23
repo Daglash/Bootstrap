@@ -46,7 +46,7 @@ const CategoriasItems = ({item}) => {
     return(
         <div>
             <Container>
-                <Link to={`/Categorias/${item.title}`}>
+                <Link to={`/Categorias/${item.categorias}`}>
                 <Image src={item.img}/>
                 <Info>
                     <Title bg={item.bg}>{item.title}</Title>
