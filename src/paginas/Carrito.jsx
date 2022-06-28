@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
+
+
 
 const Container = styled.div``;
 
@@ -42,7 +45,7 @@ const Carrito = () => {
       <Wrapper>
         <Title>Tu Carrito</Title>
         <Top>
-          <TopButton>CONTINUAR COMPRANDO</TopButton>
+        <Link to="/"><TopButton>CONTINUAR COMPRANDO</TopButton> </Link>
             <Text>Shopping Bag(2)</Text>
             <Text>Lista de Deseadod (0)</Text>
           <TopButton type="filled">COMPRAR</TopButton>

@@ -1,6 +1,10 @@
 import { createContext } from "react";
 import { useState } from "react";
+
+
+
 export const context = createContext(); 
+
 export const Provider=context.Provider; 
 
 
@@ -10,6 +14,8 @@ export const MiProvider = ({children}) => {
   const [carrito,setCarrito]=useState([])
   const [cantidad_total,setCantidadTotal]=useState(0)
   const [precio_total,setPrecioTotal]=useState(0)
+
+
   function comprobarDuplicado(producto,array){
     const add=false
     for(let product in array){
@@ -23,18 +29,24 @@ export const MiProvider = ({children}) => {
     return array;
   }
   const addProducto=(producto,cantidad)=>{
-    console.log("esto es el carrito"+{carrito})
-    const car=carrito
+    console.log("Su compra es "+{carrito})
+    const carr=carrito
     const carro=[]
     carro=carrito
     carro=comprobarDuplicado(producto,carro,cantidad);
     updateContador();
     setCarrito(carro);
   }
-  const deleteProducto=(producto)=>{
-  
-  }
+  const deleteProducto=(producto)=>(id) => {
+    carrito.splice(
+        carrito.findIndex((i) => i.id === id), 1
+    )
+    setCarrito([...carrito])
+    
+}
+
   const actualizeProduct=(producto)=>{}
+      setCarrito([])
   
   const updateContador=()=>{
       setCantidadTotal(carrito.length)

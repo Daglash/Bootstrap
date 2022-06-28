@@ -85,16 +85,12 @@ const AddContainer = styled.div`
 
 const AmountContainer = styled.div`
   display: flex;
+  flex:1;
   align-items: center;
   font-weight: 700;
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  border: 1px solid teal;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0px 5px;
+ 
+  
+  
 `;
 
 

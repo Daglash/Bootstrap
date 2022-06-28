@@ -1,9 +1,19 @@
+import { Container } from '@material-ui/core';
 import React from 'react';
 import { useState } from 'react';
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 
-
+const Amount = styled.span`
+  width: 30px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid teal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0px 5px;
+`;
 
 const Button = styled.button`
   display: flex;
@@ -13,8 +23,7 @@ const Button = styled.button`
   border: 2px solid teal;
   background-color: white;
   cursor: pointer;
-  font-weight: 500;
-  flex-wrap: wrap;
+  font-weight: 200px;
 
   &:hover{
       background-color: #f8f4f4;
@@ -40,14 +49,15 @@ export const ItemCount = ({initial, stock, onAdd}) => {
       }
 
     return(
+        <Container>
         <div>
-            <button disabled={count<=0} onClick={decrease}>-</button>
-            <span>{count}</span>
-            <button disabled= {count >= stock} onClick={increase}>+</button>
+            <Button disabled={count<=0} onClick={decrease}>-</Button>
+            <Amount>{count}</Amount>
+            <Button disabled= {count >= stock} onClick={increase}>+</Button>
         <div>
             {!addProducto
             ?
-            <button disabled = {count<=0} onClick={confirmarContador}>Agregar al carrito</button>
+            <Button disabled = {count<=0} onClick={confirmarContador}>Agregar al carrito</Button>
             :
             <>
                 <Link to="/Carrito">
@@ -60,6 +70,7 @@ export const ItemCount = ({initial, stock, onAdd}) => {
             }   
         </div>
         </div>
+    </Container>
     )
 }
 
