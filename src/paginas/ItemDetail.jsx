@@ -1,5 +1,8 @@
+import { useContext } from "react";
 import styled from "styled-components";
+import { CartContext } from "../Componentes/CartContext";
 import ItemCount from "../Componentes/ItemCount";
+import { productosventa } from "../data";
 // import { useState } from "react"
 
 const Container = styled.div``;
@@ -97,7 +100,7 @@ const AmountContainer = styled.div`
 
 const ItemDetail = ({img,Nombre,stock,precio,descripcion}) => {
 
-  
+  const {addItemToCart} = useContext(CartContext)
   // const [cant, setCant] = useState(true)
 
   const onAdd = (quantity) => {
@@ -138,7 +141,8 @@ const ItemDetail = ({img,Nombre,stock,precio,descripcion}) => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-                <ItemCount initial={0} stock={stock} onAdd={onAdd}/>  
+                <ItemCount initial={0} stock={stock} onAdd={onAdd}/>
+                <button onClick={()=> addItemToCart(productosventa)}>Add to Cart</button> 
             </AmountContainer>
           </AddContainer>
         </InfoContainer>

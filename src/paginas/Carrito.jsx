@@ -39,6 +39,7 @@ const Text = styled.span`
 `;
 
 
+
 const Carrito = () => {
   return (
     <Container>

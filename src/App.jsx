@@ -4,7 +4,7 @@ import Navbar from "./Componentes/Navbar";
 import {BrowserRouter} from "react-router-dom";
 import Anuncio from "./Componentes/Anuncio";
 import Footer from "./Componentes/Footer";
-import { Provider } from "./Componentes/MiContexto"
+import { CartProvider } from "./Componentes/CartContext"
 
 
 const App = () => {
@@ -12,9 +12,9 @@ const App = () => {
         <BrowserRouter>
             <Anuncio/>
             <Navbar/>
-            <Provider>
+            <CartProvider>
                 <Home/>
-            </Provider>
+            </CartProvider>
             <Footer/>
         </BrowserRouter>
 );
