@@ -41,7 +41,7 @@ const Text = styled.span`
 
 
 
-const Carrito = ({item}) => {
+const Carrito = ({product}) => {
   const {removeProduct}= useCartContext()
   
   return (
@@ -50,12 +50,12 @@ const Carrito = ({item}) => {
         <Title>Tu Carrito</Title>
         <Top>
         <Link to="/"><TopButton>CONTINUAR COMPRANDO</TopButton> </Link>
-            <td>{item.product.Nombre}</td>
-            <td>{item.quantity}</td>
-            <td>{item.product.precio}</td>
+            <td>{product.Nombre}</td>
+            <td>{product.quantity}</td>
+            <td>{product.precio}</td>
             <Text>Shopping Bag(2)</Text>
             <Text>Lista de Deseadod (0)</Text>
-            <TopButton type="filled" onClick={() =>{removeProduct(item.product.id)}}>Quitar</TopButton>
+            <TopButton type="filled" onClick={() =>{removeProduct(product.id)}}>Quitar</TopButton>
           <TopButton type="filled">COMPRAR</TopButton>
         </Top>
       </Wrapper>
