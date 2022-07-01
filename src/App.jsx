@@ -4,19 +4,19 @@ import Navbar from "./Componentes/Navbar";
 import {BrowserRouter} from "react-router-dom";
 import Anuncio from "./Componentes/Anuncio";
 import Footer from "./Componentes/Footer";
-import { CartProvider } from "./Componentes/CartContext"
+import { CartContextProvider } from "./Componentes/CartContextfinal"
 
 
 const App = () => {
     return (
+    <CartContextProvider>
         <BrowserRouter>
             <Anuncio/>
             <Navbar/>
-            <CartProvider>
-                <Home/>
-            </CartProvider>
+            <Home/>
             <Footer/>
         </BrowserRouter>
+    </CartContextProvider>
 );
     
 }

@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import {useCartContext } from "../Componentes/CartContextfinal";
 
 
 
@@ -40,15 +41,21 @@ const Text = styled.span`
 
 
 
-const Carrito = () => {
+const Carrito = ({item}) => {
+  const {removeProduct}= useCartContext()
+  
   return (
     <Container>
       <Wrapper>
         <Title>Tu Carrito</Title>
         <Top>
         <Link to="/"><TopButton>CONTINUAR COMPRANDO</TopButton> </Link>
+            <td>{item.product.Nombre}</td>
+            <td>{item.quantity}</td>
+            <td>{item.product.precio}</td>
             <Text>Shopping Bag(2)</Text>
             <Text>Lista de Deseadod (0)</Text>
+            <TopButton type="filled" onClick={() =>{removeProduct(item.product.id)}}>Quitar</TopButton>
           <TopButton type="filled">COMPRAR</TopButton>
         </Top>
       </Wrapper>

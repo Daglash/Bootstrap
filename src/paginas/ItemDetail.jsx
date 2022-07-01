@@ -1,8 +1,8 @@
-import { useContext } from "react";
+
 import styled from "styled-components";
-import { CartContext } from "../Componentes/CartContext";
 import ItemCount from "../Componentes/ItemCount";
-import { productosventa } from "../data";
+import {useCartContext } from "../Componentes/CartContextfinal";
+
 // import { useState } from "react"
 
 const Container = styled.div``;
@@ -96,16 +96,23 @@ const AmountContainer = styled.div`
   
 `;
 
+// {img,Nombre,stock,precio,descripcion}
+
+const ItemDetail = ({product}) => {
+
+  const {cart, addToCart} = useCartContext();
+
+ const onAdd = (cantidad)=>{ addToCart( {...product,cantidad} ) };
+
+  console.log(cart)
 
 
-const ItemDetail = ({img,Nombre,stock,precio,descripcion}) => {
 
-  const {addItemToCart} = useContext(CartContext)
   // const [cant, setCant] = useState(true)
 
-  const onAdd = (quantity) => {
-    console.log(`Adicionaste ${quantity} unidades de ${Nombre} tu carrito`);
-}
+//   const onAdd = (quantity) => {
+//     console.log(`Adicionaste ${quantity} unidades de ${Nombre} tu carrito`);
+// }
 
   // const onAdd = (cantidadSeleccionada) => {
   //   setCant(cantidadSeleccionada)
@@ -114,13 +121,13 @@ const ItemDetail = ({img,Nombre,stock,precio,descripcion}) => {
     <Container>
       <Wrapper>
         <ImgContainer>
-          <Image src={img} />
+          <Image src={product.img} />
         </ImgContainer>
         <InfoContainer>
-          <Title>{Nombre}</Title>
-          <Desc>{descripcion}</Desc>
-          <Price>Precio: ${precio}</Price>
-          <Stock>Stock:  {stock}</Stock>
+          <Title>{product.Nombre}</Title>
+          <Desc>{product.descripcion}</Desc>
+          <Price>Precio: ${product.precio}</Price>
+          <Stock>Stock:  {product.stock}</Stock>
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
@@ -141,8 +148,7 @@ const ItemDetail = ({img,Nombre,stock,precio,descripcion}) => {
           </FilterContainer>
           <AddContainer>
             <AmountContainer>
-                <ItemCount initial={0} stock={stock} onAdd={onAdd}/>
-                <button onClick={()=> addItemToCart(productosventa)}>Add to Cart</button> 
+                <ItemCount initial={1} stock={product.stock} onAdd={onAdd} data={product}/>
             </AmountContainer>
           </AddContainer>
         </InfoContainer>
