@@ -37,7 +37,7 @@ const Button = styled.button`
 const ItemCount = ({stock, initial, onAdd, product }) => {
     const [count, setCount]  = useState(initial);
     const {addToCart} = useCartContext();
-
+    const [addedToCart, setAddedToCart] =useState(false);
    
    
     function incrementar(){  
@@ -51,7 +51,10 @@ const ItemCount = ({stock, initial, onAdd, product }) => {
         setCount( count - 1 )
      };
      
-   const agregar = () => {  onAdd(count) };
+   const agregar = (e) => {  
+    onAdd(count)
+    setAddedToCart(true) }
+    ;
    
    function handlerSubmit(){
      addToCart({ cantidad: count, data: product })
@@ -68,18 +71,19 @@ const ItemCount = ({stock, initial, onAdd, product }) => {
             <Amount>{count}</Amount>
             <Button disabled= {count >= stock}  onClick={incrementar}>+</Button>
         <div>
-    
-
+            {!addedToCart
+            ?
             <Button disabled = {count<=0} onClick={agregar}>Agregar al carrito</Button>
-        
-            
+            :
+            <>
                 <Link to="/Carrito">
                     <Button onClick={handlerSubmit}>Ir al carrito</Button>
                 </Link>
                 <Link to="/">
                     <Button>Seguir comprando</Button> 
                 </Link>
-            
+            </>
+            }   
         
         </div>
         </div>

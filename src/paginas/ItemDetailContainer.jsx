@@ -8,7 +8,8 @@ import { getProductById } from '../customFetch';
 const ItemDetailContainer = () => {
     const [ product, setProducto] =useState({});
     const {id} =useParams()
-
+   
+    
     useEffect(() =>{
         getProductById(parseInt(id))
             .then((response) =>{setProducto(response);})

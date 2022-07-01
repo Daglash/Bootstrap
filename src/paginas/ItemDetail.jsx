@@ -2,6 +2,7 @@
 import styled from "styled-components";
 import ItemCount from "../Componentes/ItemCount";
 import {useCartContext } from "../Componentes/CartContextfinal";
+import React from "react";
 
 // import { useState } from "react"
 
@@ -100,23 +101,20 @@ const AmountContainer = styled.div`
 
 const ItemDetail = ({product}) => {
 
-  const {cart, addToCart} = useCartContext();
+  const {addToCart} = useCartContext();
 
- const onAdd = (cantidad)=>{ addToCart( {...product,cantidad} ) };
+ const onAdd = (cantidad)=>{ 
+    addToCart( {...product,cantidad} );
+    console.log(`Adicionaste ${cantidad} unidades de ${product.Nombre} tu carrito`)
+  };
 
-  console.log(cart)
+  
 
 
 
-  // const [cant, setCant] = useState(true)
+ 
 
-//   const onAdd = (quantity) => {
-//     console.log(`Adicionaste ${quantity} unidades de ${Nombre} tu carrito`);
-// }
 
-  // const onAdd = (cantidadSeleccionada) => {
-  //   setCant(cantidadSeleccionada)
-  // }
   return (
     <Container>
       <Wrapper>
