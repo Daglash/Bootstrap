@@ -111,9 +111,7 @@ const Carrito = ({product}) => {
      <Wrapper>
      <Title>Carrito de Compras</Title>
      <Top>
-          <TopButton>CONTINUE SHOPPING</TopButton>
-      
-          <TopButton type="filled">CHECKOUT NOW</TopButton>
+          
         <ul> 
              {
                 cartList.map( producto => <li key={producto.id} style= { {listStyleType: 'none'} } >
@@ -122,9 +120,9 @@ const Carrito = ({product}) => {
                             <Image src={producto.img}/>
                                     <Details>
                                     <ProductName>
-                                    <b>Product:{producto.Nombre}</b>
+                                    <b>Product: {producto.Nombre}</b>
                                     </ProductName>
-                                    < h4 className="m-5 text-center">{producto.descripcion}</h4> 
+                                    < h4>{producto.descripcion}</h4> 
                                     </Details>
                                     
                         </ProductDetail> 
@@ -136,19 +134,13 @@ const Carrito = ({product}) => {
                                 </ProductAmountContainer>
                                 <ProductPrice>
                                    Total : {producto.precio}
+                                   < button href="/" onClick={removeProduct}>Eliminar</button>
                                 </ProductPrice>
                               </PriceDetail>
                     </Product>
-                        
-                        <button  
-                                onClick={clearList} > Vaciar Carrito </button>
-                        <button  
-                                 > Terminar Compra </button>
-                        < button href="/" 
-                                    
-                                     onClick={removeProduct}>Eliminar</button>
-               
-
+                    <Link to= "/"> <TopButton>Continuar Comprando</TopButton></Link>
+                    <TopButton  onClick={clearList}>Vaciar Carrito</TopButton>
+                    <TopButton type="filled">Terminar Compra</TopButton>
                     </li>  )
              }
 

@@ -1,4 +1,5 @@
-import { createContext,useState,useContext } from "react";
+import { createContext,useState,useContext,useEffect } from "react";
+
 
 const CartContext = createContext([]);
 
@@ -6,21 +7,37 @@ export const useCartContext = () => useContext(CartContext);
 
 export const CartContextProvider =({children}) => {
 
-    const [cartList,setCartList] = useState([]);
+    const [cartList,setCartList] = useState(() =>{
+        try {
+            const productosEnLocalStorage = localStorage.getItem('cartProducts');
+            return productosEnLocalStorage ? JSON.parse(productosEnLocalStorage) : [];
+        }catch(error){
+                return [];
+            }
+    });
 
-    const addToCart = (objProduct) => {
+    useEffect(() =>{
+     localStorage.setItem('cartProducts',JSON.stringify(cartList));
+        console.log(cartList)
+    }, [cartList]);
 
-        let carritoprevio = [...cartList];
-        if (carritoprevio.some((product) => product.id === objProduct.product.id))
-        {
-            carritoprevio.find((product) => product.id === objProduct.product.id).quantity += objProduct.quantity;
-            setCartList(carritoprevio);
-        }else{
-            setCartList([...cartList,objProduct]);
-        }
-        
+    const addToCart = (product) => {
+        const inCart = cartList.find(
+                 (productInCart) => productInCart.id === product.id
+             );
+
+        if(inCart){
+            setCartList(
+             cartList.map((productInCart) => {
+                if (productInCart.id === product.id){
+                return {...inCart , amount: inCart.amount + 1};
+                }else return productInCart;
+             })
+                 );
+        } else {
+            setCartList([...cartList,{...product,amount : 1}]);
+            }
     };
-
 
     const clearList = () => setCartList([]);
 
@@ -29,7 +46,7 @@ export const CartContextProvider =({children}) => {
         
         cartList.forEach((newProduct) =>{
         total +=
-            parseInt(newProduct.product.precio) * parseInt(newProduct.quantity);
+            parseInt(newProduct.product.precio) * parseInt(newProduct.cantidad);
     });
 
     return parseInt(total);
@@ -39,7 +56,7 @@ export const CartContextProvider =({children}) => {
         setCartList(cartList.filter((newProduct) => newProduct.product.id !== id ));
     };
 
-    const iconCart = () => cartList.reduce((acum,valor) => acum + valor.quantity,0);
+    const iconCart = () => cartList.reduce((acum,valor) => acum + valor.cantidad,0);
 
     return (
         <CartContext.Provider value = {{
