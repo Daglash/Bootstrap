@@ -44,17 +44,17 @@ export const CartContextProvider =({children}) => {
     const totalPrice = () => {
         let total =0;
         
-        cartList.forEach((newProduct) =>{
+        cartList.forEach((product) =>{
         total +=
-            parseInt(newProduct.product.precio) * parseInt(newProduct.cantidad);
+            parseInt(product.precio) * parseInt(product.cantidad);
     });
 
     return parseInt(total);
     };
 
     const removeProduct = (id) => {
-        setCartList(cartList.filter((newProduct) => newProduct.product.id !== id ));
-    };
+            setCartList(cartList.filter((newProduct) => newProduct.id !== id ));
+        };
 
     const iconCart = () => cartList.reduce((acum,valor) => acum + valor.cantidad,0);
 

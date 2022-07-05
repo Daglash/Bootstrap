@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import {useCartContext } from "../Componentes/CartContextfinal";
+import {useCartContext} from "../Componentes/CartContextfinal";
 
 
 
@@ -95,7 +95,7 @@ const ProductPrice = styled.div`
 
 
 const Carrito = ({product}) => {
-  const { cartList, clearList, removeProduct } = useCartContext();
+  const { cartList, clearList, removeProduct,totalPrice } = useCartContext();
   
   return (
     <Container>
@@ -134,21 +134,22 @@ const Carrito = ({product}) => {
                                 </ProductAmountContainer>
                                 <ProductPrice>
                                    Total : {producto.precio}
-                                   < button href="/" onClick={removeProduct}>Eliminar</button>
+                                   <button href="/" onClick={() => removeProduct(producto.id)}>Eliminar</button>
                                 </ProductPrice>
                               </PriceDetail>
+                             
                     </Product>
-                    <Link to= "/"> <TopButton>Continuar Comprando</TopButton></Link>
-                    <TopButton  onClick={clearList}>Vaciar Carrito</TopButton>
-                    <TopButton type="filled">Terminar Compra</TopButton>
                     </li>  )
              }
 
         </ul >
-       
+        TOTAL : ${totalPrice()}
       </Top>
       </Wrapper>
 }
+  <Link to= "/"> <TopButton>Continuar Comprando</TopButton></Link>
+  <TopButton  onClick={clearList}>Vaciar Carrito</TopButton>
+  <TopButton type="filled">Terminar Compra</TopButton>
 
 
 </Container>
