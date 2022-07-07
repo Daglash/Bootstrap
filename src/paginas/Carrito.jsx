@@ -1,8 +1,10 @@
-import React from "react";
+import React,{useState} from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import {useCartContext} from "../Componentes/CartContextfinal";
-
+import Form from "./Forms";
+import { addDoc, collection, serverTimestamp } from 'firebase/firestore';
+import {db} from "../firebaseConfig";
 
 
 
@@ -95,8 +97,53 @@ const ProductPrice = styled.div`
 
 
 const Carrito = ({product}) => {
+  const [data, setData] = useState({ name: '', email: '', phone: '' });
+  const [orderId, setOrderId] = useState('');
+  
   const { cartList, clearList, removeProduct,totalPrice } = useCartContext();
   
+
+  const handleChange = (e) => {
+        const { name, value } = e.target;
+        setData({
+            ...data,
+            [name]: value,
+        });
+    };
+
+   const handleSubmit = (e) => {
+        /* const formatedCart = cart.map((prod) => {
+            return {
+                cantidad: prod.cantidad,
+                id: prod.id,
+            };
+        }); */
+        e.preventDefault();
+        const objOrden = {
+            buyer: {
+                name: data.name,
+                phone: data.phone,
+                email: data.email,
+            },
+            cartList,
+            total: totalPrice(),
+            date: serverTimestamp(),
+        };
+
+    const ref = collection(db, 'orders');
+        addDoc(ref, objOrden).then((response) => {
+            setOrderId(response.id);
+            removeProduct();
+        });
+    };
+    if (orderId !== '') {
+        return <h1>Gracias por tu compra, tu número de envío es: {orderId}</h1>;
+    }
+
+
+
+
+
   return (
     <Container>
     {
@@ -145,11 +192,16 @@ const Carrito = ({product}) => {
         </ul >
         TOTAL : ${totalPrice()}
       </Top>
+      <Form
+                        handleChange={handleChange}
+                        data={data}
+                        handleSubmit={handleSubmit}
+                    />
       </Wrapper>
 }
   <Link to= "/"> <TopButton>Continuar Comprando</TopButton></Link>
   <TopButton  onClick={clearList}>Vaciar Carrito</TopButton>
-  <TopButton type="filled">Terminar Compra</TopButton>
+  
 
 
 </Container>
