@@ -9,15 +9,25 @@ import {useCartContext } from "../Componentes/CartContextfinal";
 
 
 const Amount = styled.span`
-  width: 30px;
-  height: 30px;
-  border-radius: 10px;
-  border: 1px solid teal;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0px 5px;
+  font-size: 40px;
+  padding-bottom:10px;
 `;
+
+const AmountContainer = styled.div`
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  padding:20px 20px;
+  justify-content:space-between;
+  margin:10px 20px;
+`;
+
 
 const Button = styled.button`
   display: flex;
@@ -28,6 +38,8 @@ const Button = styled.button`
   background-color: white;
   cursor: pointer;
   font-weight: 200px;
+  margin-left: 10px;
+  margin-right:10px;
 
   &:hover{
       background-color: #f8f4f4;
@@ -66,11 +78,11 @@ const ItemCount = ({stock, initial, onAdd, product }) => {
 
     return(
         <Container>
-        <div>
+        <AmountContainer>
             <Button disabled={count<=0} onClick={decrementar}>-</Button>
             <Amount>{count}</Amount>
             <Button disabled= {count >= stock}  onClick={incrementar}>+</Button>
-        <div>
+        <AmountContainer>
             {!addedToCart
             ?
             <Button disabled = {count<=0} onClick={agregar}>Agregar al carrito</Button>
@@ -84,9 +96,8 @@ const ItemCount = ({stock, initial, onAdd, product }) => {
                 </Link>
             </>
             }   
-        
-        </div>
-        </div>
+        </AmountContainer>
+        </AmountContainer>
     </Container>
     )
 }

@@ -2,17 +2,17 @@ import React from 'react';
 import {Link} from "react-router-dom"
 import styled from "styled-components";
 import {
-  SearchOutlined,
   ShoppingCartOutlined,
 } from "@material-ui/icons";
 
 
 const Container = styled.div`
     flex: 1;
-    margin: 20px;
+    margin: 10px;
     flex-wrap:wrap;
-    min-width: 300px;
-    height: 600px;
+    padding:30px;
+    min-width: 290px;
+    height: 550px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -22,16 +22,15 @@ const Container = styled.div`
 `
 
 const Image = styled.img`
-    height: 80%;
+    height: 90%;
 
     `
 
 const Wrapper =styled.div`
     flex:1;
     width: fit-content;
-    background-color:lightgreen;
     margin: auto;
-    padding: 1rem;
+    padding: 20px;
     text-align: center;
     font-size: 30px;
     flex-wrap: wrap;
@@ -48,7 +47,6 @@ const Item = ({item}) => {
         <Image src ={item.img}/>
         <Wrapper>
             <Texto Nombre={item.Nombre}>{item.Nombre}</Texto>
-            <Link to={`../ItemDetail/${item.id}`}><SearchOutlined /></Link>
             <Link to={`../ItemDetail/${item.id}`}><ShoppingCartOutlined/></Link>
         </Wrapper>
     </Container>

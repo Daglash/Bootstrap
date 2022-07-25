@@ -3,15 +3,16 @@ import styled from "styled-components";
 import ItemCount from "../Componentes/ItemCount";
 import {useCartContext } from "../Componentes/CartContextfinal";
 import React from "react";
+import {mobile} from "../responsive";
 
-// import { useState } from "react"
+import { useState } from "react"
 
 const Container = styled.div``;
 
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
-  
+  ${mobile({ padding: "10px", flexDirection:"column" })}
 `;
 
 const ImgContainer = styled.div`
@@ -22,11 +23,13 @@ const Image = styled.img`
   width: 100%;
   height: 90vh;
   object-fit: cover;
+  ${mobile({ height: "40vh" })}
 `;
 
 const InfoContainer = styled.div`
   flex: 1;
   padding: 0px 50px;
+  ${mobile({ padding: "10px" })}
 `;
 
 const Title = styled.h1`
@@ -52,6 +55,7 @@ const FilterContainer = styled.div`
   margin: 30px 0px;
   display: flex;
   justify-content: space-between;
+  ${mobile({ width: "100%" })}
 `;
 
 const Filter = styled.div`
@@ -85,6 +89,7 @@ const AddContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${mobile({ width: "100%" })}
 `;
 
 const AmountContainer = styled.div`
@@ -102,9 +107,11 @@ const AmountContainer = styled.div`
 const ItemDetail = ({product}) => {
 
   const {addToCart} = useCartContext();
+  const [Color, setColor] = useState("");
+  const [Size, setSize] = useState("");
 
  const onAdd = (cantidad)=>{ 
-    addToCart( {...product,cantidad} );
+    addToCart( {...product,cantidad,Size,Color} );
     console.log(`Adicionaste ${cantidad} unidades de ${product.Nombre} tu carrito`)
   };
 
@@ -129,18 +136,16 @@ const ItemDetail = ({product}) => {
           <FilterContainer>
             <Filter>
               <FilterTitle>Color</FilterTitle>
-              <FilterColor color="Yellow" />
-              <FilterColor color="Red" />
-              <FilterColor color="Black" />
+              {product.Color?.map((c) => (
+                <FilterColor color={c} key={c} onClick={() => setColor(c)} />
+              ))}
             </Filter>
             <Filter>
               <FilterTitle>Size</FilterTitle>
-              <FilterSize>
-                <FilterSizeOption>XS</FilterSizeOption>
-                <FilterSizeOption>S</FilterSizeOption>
-                <FilterSizeOption>M</FilterSizeOption>
-                <FilterSizeOption>L</FilterSizeOption>
-                <FilterSizeOption>XL</FilterSizeOption>
+              <FilterSize onChange={(e) => setSize(e.target.value)}>
+                {product.Size?.map((s) => (
+                  <FilterSizeOption key={s}>{s}</FilterSizeOption>
+                ))}
               </FilterSize>
             </Filter>
           </FilterContainer>

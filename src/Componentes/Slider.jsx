@@ -3,6 +3,8 @@ import { useState } from "react";
 import React from "react";
 import styled from "styled-components";
 import {sliderItems} from "../data";
+import {mobile} from "../responsive"
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
     width:100%;
@@ -11,6 +13,7 @@ const Container = styled.div`
     background-color:white;
     position:relative;
     overflow:hidden;
+    ${mobile({ display: "none" })}
 
 `
 
@@ -117,7 +120,7 @@ const Slider = () => {
                     <InfoContainer>
                         <Title bgh={item.bgh}>{item.title}</Title>
                         <Desc bgh={item.bgh}>{item.desc}</Desc>
-                        <Button bgh={item.bgh}>はじめ</Button>
+                        <Link to="/Registro"><Button bgh={item.bgh}>はじめ</Button></Link>
                     </InfoContainer>
                     </Slide>
                 ))}

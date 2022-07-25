@@ -43,7 +43,7 @@ export const sliderItems = [
     {
       id: 3,
       img: "https://st.depositphotos.com/1606463/2705/i/450/depositphotos_27053945-stock-photo-fighters.jpg",
-      title: "用品 Yōhin",
+      title: "Yōhin  ( 用品 )",
       categorias:"Yōhin",
       bg:"ff0000",
 

@@ -7,6 +7,8 @@ import ItemDetailContainer from "./ItemDetailContainer";
 import ItemListContainer from "../Componentes/ItemListContainer";
 import BarCategorias from "../Componentes/BarCategorias";
 import Carrito from "./Carrito";
+import Registro from "./Registro";
+import Login from "./Login";
 // import { Slider } from "@material-ui/core";
 
 const Home = () => {
@@ -33,7 +35,12 @@ const Home = () => {
         <Routes>
             <Route path="/Carrito" element={<Carrito/>}/>
         </Routes>
-        
+        <Routes>
+            <Route path="/Registro" element={<Registro/>}/>
+        </Routes>
+        <Routes>
+            <Route path="/Login" element={<Login/>}/>
+        </Routes>
 
 
 

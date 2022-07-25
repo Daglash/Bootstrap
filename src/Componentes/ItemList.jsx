@@ -3,7 +3,7 @@ import Item from "./Item"
 import styled from "styled-components";
 
 const Container = styled.div`
-padding:20px;
+padding:10px;
 display:flex;
 flex-wrap: wrap;
 `

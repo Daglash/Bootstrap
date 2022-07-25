@@ -118,7 +118,7 @@ import {
           </List>
         </Center>
         <Right>
-          <Title>Contact</Title>
+          <Title>Contacto</Title>
           <ContactItem>
             <Room style={{marginRight:"10px"}}/> Calle Falsa 123
           </ContactItem>
